@@ -1,5 +1,19 @@
+pipeline {
+    agent any
 
 stages {
+        stage('Checkout') {
+            steps {
+                // Checkout source code from repository
+                checkout scm
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                // Install Composer dependencies
+                sh 'composer install'
+            }
+        }
     stage('Static Analysis') {
         parallel {
           stage('CodeSniffer') {
@@ -58,5 +72,6 @@ stage('Unit Tests') {
         ])
         publishCoverage adapters: [coberturaAdapter('build/logs/cobertura.xml')]
     }
+}
 }
 }
