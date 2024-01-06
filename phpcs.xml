@@ -1,0 +1,4 @@
+<ruleset name="Default">
+    <arg name="report-checkstyle" value="build/logs/phpcs.checkstyle.xml" />
+    <arg name="cache" value="build/cache/codesniffer.phpcs" />
+</ruleset>
